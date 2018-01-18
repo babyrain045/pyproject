@@ -1,10 +1,19 @@
-from douban import Login
-from douban import IPAgent
-from douban import CloudWords
+import sys
+import os
+
+path = os.getcwd()
+print(path)
+sys.path.append(path)
+
+import Login
+import IPAgent
+import CloudWords
 import requests
 import random
 from bs4 import BeautifulSoup
 import time
+
+
 
 
 
@@ -36,6 +45,7 @@ def get_all_comment( all_comment_url, headers, proxy_list,count, x=1,all_comment
         comment_list.append(i.p.get_text())
     for i in comment_list:
         all_comments = all_comments+str(i.strip())
+        print(x,i)
     if x<count:
         next_page = soup.find('div',{'id':'paginator'}).find('a',{'class','next'})
         next_url = next_page.attrs['href']
@@ -58,6 +68,7 @@ def get_all_comment( all_comment_url, headers, proxy_list,count, x=1,all_comment
 
 
 all_comments = get_all_comment( all_comment_url, headers, proxy_list,10)
+
 CloudWords.Word_Cloud(all_comments)
 
 

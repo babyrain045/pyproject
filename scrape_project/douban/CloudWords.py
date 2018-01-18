@@ -21,7 +21,7 @@ def Word_Cloud(text_):
 
     words_stat = words_df.groupby(by = ['segment'])['segment'].agg({'计数':numpy.size})
     words_stat = words_stat.reset_index().sort_values(by = ['计数'],ascending=False)
-    wordcloud = WordCloud( font_path ="simhei.ttf", background_color="white", max_font_size=80,mask = bg_pic)
+    wordcloud = WordCloud( font_path ="simhei.ttf", background_color="white", max_font_size=80)
     word_frequence = {x[0]:x[1] for x in words_stat.head(2000).values}
 
     word_frequence_list = []
