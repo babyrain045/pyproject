@@ -32,7 +32,14 @@ soup = BeautifulSoup(page_movie.text,'lxml')
 movie_comment_url = soup.find('div',{'id':'comments-section'}).h2.span.a
 all_comment_url = movie_comment_url.attrs['href']
 print(all_comment_url)
-co = Login.login('am_cr','Cr930405')
+
+print("Please input Douban Account Information")
+print("Please input username:")
+username = input()
+print("Please input passport:")
+passport = input()
+
+co = Login.login(username,passport)
 
 def get_all_comment( all_comment_url, headers, proxy_list,count, x=1,all_comments = ''):
     proxy = random.choice(proxy_list)
