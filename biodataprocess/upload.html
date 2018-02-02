@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>数据处理页面</title>
+
+<style type = text/css>
+.center{
+    margin-top: 100px;
+    margin-left:auto;
+    margin-right:auto;
+    width:25%;
+    background-color: gainsboro;
+
+}
+    .outset{
+        border-style: outset;
+        border-width: thick;
+    }
+
+    .innerborder{
+        padding-bottom: 20px;
+        padding-right: auto;
+        padding-top: 5px;
+        padding-left: auto;
+    }
+    p.border{
+        padding-left: 60px;
+    }
+    p.lineheight{
+        line-height: 40px;
+    }
+    input.border{
+        border-style: inset;
+        border-width: 3px;
+    }
+    .btn{
+        border-style: outset;
+        border-width: 3px;
+        padding: 5px 40px 5px 40px;
+    }
+    .fileinput_button{
+        border-style: outset;
+        border-width: 4px;
+        padding: 5px 30px 5px 30px;
+    }
+
+    </style>
+</head>
+
+
+<body>
+
+<div class="center outset innerborder">
+    <center><h1>将源数据转换成指定数据</h1></center>
+<form action="/upload" method="post" enctype="multipart/form-data">
+
+   <center> <input type="radio" name = "type" value = "Identity">Identity
+    <input type="radio" name = "type" value = "BitScore">BitScore
+       <input type="radio" name = "type" value = "E-Value">E-Value<br></center>
+    <p class = 'border lineheight'>请输入阈值Threshold:
+    <input class="border" type="text" name = "Threshold"><br>
+<input type="file" name="fileField"  id="fileField" size="25" onchange="document.getElementById('textfield').value=this.value" /></p>
+    <center><input type="submit" name="submit" class="btn" value="上传" onclick=""/></center>
+</form>
+ </div>
+
+</body>
+</html>
