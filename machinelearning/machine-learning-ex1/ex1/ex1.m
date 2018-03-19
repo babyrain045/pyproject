@@ -38,8 +38,11 @@ pause;
 
 %% ======================= Part 2: Plotting =======================
 fprintf('Plotting Data ...\n')
-data = load('ex1data1.txt');
-X = data(:, 1); y = data(:, 2);
+%data = load('ex1data1.txt');
+
+%X = data(:, 1); y = data(:, 2);
+X = [0 0.1 0.3 0.5 0.8 1]
+y = [140 195.9999999999997 274.3999999999999999 384.159999999999999999 537.8239999999999998 752.95359999999997]
 m = length(y); % number of training examples
 
 % Plot Data
@@ -51,7 +54,7 @@ pause;
 
 %% =================== Part 3: Cost and Gradient descent ===================
 
-X = [ones(m, 1), data(:,1)]; % Add a column of ones to x
+X = [ones(m, 1), X']; % Add a column of ones to x
 theta = zeros(2, 1); % initialize fitting parameters
 
 % Some gradient descent settings
