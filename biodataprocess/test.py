@@ -1,16 +1,8 @@
 
 
+import pandas as pd
 
-
-a = [11,19,23]
-b = 53
-
-for i in a:
-    b = b % i
-if b == 0:
-    print(True)
-else:
-    print(False)
-
-
-
+path = 'D:/Rui/kaggle/titanic'
+train_data = pd.read_csv(path + '/test.csv')
+pre_data = pd.DataFrame(train_data)
+print(pre_data)
