@@ -1,8 +1,18 @@
 
-
 import pandas as pd
 
-path = 'D:/Rui/kaggle/titanic'
-train_data = pd.read_csv(path + '/test.csv')
-pre_data = pd.DataFrame(train_data)
-print(pre_data)
+a = {'A': 12, 'C': 4, 'T': 23, 'G': 19,"a":14,'t':16,"c":89,'g':57}
+pre_a = list(a.items())
+
+df = pd.DataFrame(pre_a,columns=['id','numbers']).set_index('id')
+new_df = df.sort_values(by = 'numbers',ascending=False)
+new_df = new_df.to_dict()['numbers']
+print(new_df)
+
+
+
+
+
+
+
+
