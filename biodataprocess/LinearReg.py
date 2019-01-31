@@ -1,6 +1,6 @@
 import matplotlib.pyplot as plt
 import numpy as np
-from sklearn import linear_model,discriminant_analysis,cross_validation
+from sklearn import linear_model,discriminant_analysis
 
 
 p = [0,0.1,0.3,0.5,0.8,1]

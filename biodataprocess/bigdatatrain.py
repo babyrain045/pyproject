@@ -1,8 +1,8 @@
 import pandas as pd
 from sklearn import linear_model
 
-train_X = pd.read_csv('delete1210.csv')
-train_Y = pd.read_table('phenotype50.txt')
+train_X = pd.read_csv("delete1210.csv")
+train_Y = pd.read_table("phenotype50.txt")
 df_x = pd.DataFrame(train_X)
 df_y = pd.DataFrame(train_Y)
 df_x.set_index(["pos"],inplace=True)

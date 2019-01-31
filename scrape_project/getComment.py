@@ -1,7 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 
-url = "https://movie.douban.com/subject/26862829/comments?start=161&limit=20&sort=new_score&status=P&percent_type="
+url = "https://movie.douban.com/subject/26588308/comments?start=161&limit=20&sort=new_score&status=P&percent_type="
 requrl = requests.Session().get(url)
 soup = BeautifulSoup(requrl.text,'lxml')
 comments_list = soup.findAll('div',{'class','comment'})

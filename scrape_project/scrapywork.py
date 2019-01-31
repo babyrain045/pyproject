@@ -52,7 +52,8 @@ if captcha:
     formdata['captcha-id'] = captcha_id
     r = s.post(url_login,data = formdata,headers = headers)
 
-requrl = 'https://movie.douban.com/subject/26862829/comments?sort=new_score&status=P'
+
+requrl = 'https://movie.douban.com/subject/26588308/comments?status=P'
 headers = {
         'User-Agent':'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36'}
 requestURL = urllib.request.Request(url=requrl,headers=headers)
@@ -60,18 +61,23 @@ resp = urllib.request.urlopen(requestURL)
 html_data = resp.read().decode('utf-8')
 soup = BeautifulSoup(html_data,'lxml')
 comment_div_list = soup.find_all('div',class_ = 'comment')
+print(comment_div_list[0].find_all('p')[0].get_text())
+
 
 eachCommentList = []
+
 for item in comment_div_list:
-    if item.find_all('p')[0].string is not None:
-        eachCommentList.append(item.find_all('p')[0].string)
+    if item.find_all('p')[0].get_text() is not None:
+        eachCommentList.append(item.find_all('p')[0].get_text())
+
 next_ =  soup.find('a',{"class":"next"})
 print(next_)
+
 
 a_ = 0
 while next_.attrs['href'] is not None:
     a_ += 1
-    requrl = 'https://movie.douban.com/subject/' + '26862829' + '/comments' + next_.attrs["href"]
+    requrl = 'https://movie.douban.com/subject/' + '26588308' + '/comments' + next_.attrs["href"]
     requestURL = urllib.request.Request(url=requrl, headers=headers)
     resp = urllib.request.urlopen(requestURL)
     html_data = resp.read().decode('utf-8')
@@ -79,15 +85,19 @@ while next_.attrs['href'] is not None:
     comment_div_list = soup.find_all('div', class_='comment')
     print(a_)
     for item in comment_div_list:
-        if item.find_all('p')[0].string is not None:
-            eachCommentList.append(item.find_all('p')[0].string)
+        if item.find_all('p')[0].get_text() is not None:
+            eachCommentList.append(item.find_all('p')[0].get_text())
+    print(eachCommentList[a_])
+    if a_>20:
+        break
 
+'''
 count = 0
 for i in eachCommentList:
     count += 1
     print(count)
     print(i)
-
+'''
 
 
 
@@ -95,13 +105,17 @@ for i in eachCommentList:
 def main():
 
     commentList = []
+
+    '''
     for i in range(15):
         pagenum = i + 1
         commentList_temp = getComment(nowplaying_list[0]['id'], pagenum)
         commentList.append(commentList_temp)
+    '''
+
     comments = ''
-    for i in range(len(commentList)):
-        comments = comments + (str(commentList[i])).strip()
+    for i in range(len(eachCommentList)):
+        comments = comments + (str(eachCommentList[i])).strip()
 
     pattern = re.compile(r'[\u4e00-\u9fa5]+')
     filterdata = re.findall(pattern,comments)
