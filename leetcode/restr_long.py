@@ -12,4 +12,4 @@ b = palindrome(a)
 print(b)
 
 for i in a:
-    sub_str = [a.index(i)+1:]
+    sub_str = [a.index(i)+1]
