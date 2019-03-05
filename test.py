@@ -13,7 +13,7 @@ for line in sys.stdin:
             stu_list.append(int(i))
         print(stu_list)
     else:
-        judge_wd,ope_index,ope_val = line.split()
+        judge_wd,ope_index,ope_val = line.strip('\n').split()
         ope_index = int(ope_index)
         ope_val = int(ope_val)
         if judge_wd == 'Q':
