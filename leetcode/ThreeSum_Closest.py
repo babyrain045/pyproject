@@ -1,5 +1,5 @@
 
-nums= [-1,2,1,-4]
+nums= [0,0,0]
 nums.sort()
 target = 1
 i = 0
@@ -11,27 +11,18 @@ while i < len(nums) - 2:
     while l_flag < r_flag:
         tem_list = [nums[i], nums[l_flag], nums[r_flag]]
         count = abs(sum(tem_list) - target)
-        if count <= judge_val:
+        if count < judge_val:
             judge_val = count
             res = tem_list
+        if sum(tem_list) == target or len(nums) == 3:
+            res = tem_list
+            break
+        elif sum(tem_list) < target:
             l_flag += 1
+        else:
             r_flag -= 1
-            while l_flag < r_flag and nums[l_flag] == nums[l_flag - 1]:
-                l_flag += 1
-            while l_flag < r_flag and nums[r_flag] == nums[r_flag + 1]:
-                r_flag -= 1
-        elif count > judge_val:
-            l_flag += 1
-            r_flag -= 1
-            while l_flag < r_flag and nums[l_flag] == nums[l_flag - 1]:
-                l_flag += 1
-            while l_flag < r_flag and nums[r_flag] == nums[r_flag + 1]:
-                r_flag -= 1
-    while l_flag < r_flag and nums[i] == nums[i - 1]:
-        i += 1
-        continue
     i += 1
-print(res)
+print(sum(res))
 
 
 
